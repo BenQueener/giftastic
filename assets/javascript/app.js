@@ -39,7 +39,8 @@ $("#add-topic").on("click", function(event) {
 
 //  re-renders the HTML to display the appropriate content
  function displayTopicInfo() {
-
+   //empty the old gifs
+   $("#topic-view").empty();
     var topic = $(this).attr("data-name");
     //queryURL for Giphy API
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + topic +"&limit=" + limit;
@@ -98,9 +99,7 @@ $(document).on("click", ".topic-btn", displayTopicInfo);
 $(document).on("click", ".gif", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
-    //empty the old gifs
-    $("#topicview").empty();
-
+    
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
     // Then, set the image's data-state to animate
     // Else set src to the data-still value
