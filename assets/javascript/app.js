@@ -6,7 +6,6 @@ var topics = ["Goku", "Vegeta", "Gohan", "Trunks", "Frieza", "Bulma", "Android 8
 var limit = 10;
 // Function for displaying topic data
 function renderButtons() {
-
     // Deleting the topic buttons prior to adding new movie buttons
     $("#buttons-view").empty();
 
@@ -31,10 +30,14 @@ $("#add-topic").on("click", function(event) {
     event.preventDefault();
     // This line will grab the text from the input box
     var topic = $("#topic-input").val().trim();
-    // The movie from the textbox is then added to our array
-    topics.push(topic);
-    // calling renderButtons which handles the processing of our topic array
-    renderButtons();
+    
+    //check to make sure they typed something
+    if (topic !== ""){
+        // The movie from the textbox is then added to our array
+        topics.push(topic);
+        // calling renderButtons which handles the processing of our topic array
+        renderButtons();
+    }
 });
 
 //  re-renders the HTML to display the appropriate content
@@ -99,7 +102,7 @@ $(document).on("click", ".topic-btn", displayTopicInfo);
 $(document).on("click", ".gif", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
-    
+
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
     // Then, set the image's data-state to animate
     // Else set src to the data-still value
