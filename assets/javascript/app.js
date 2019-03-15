@@ -60,15 +60,6 @@ $("#add-topic").on("click", function(event) {
         // Creating a div to hold the gif topic
         var topicDiv = $("<div class='topic'>");
 
-        // Storing the rating data
-        var rating = response.data[i].rating;
-
-        // Creating an element to have the rating displayed
-        var pRating = $("<p>").text("Rating: " + rating);
-
-        // Displaying the rating
-        topicDiv.append(pRating);
-
         // Storing the image still
         var stillURL = response.data[i].images.fixed_height_still.url;
         // Storing the moving gif
@@ -80,11 +71,18 @@ $("#add-topic").on("click", function(event) {
         still.attr("data-still", stillURL);
         still.attr("data-animate", gifURL);
         still.attr("data-state", "still");
-
-
-        // Displaying the release year
+        
+        // Displaying the image
         topicDiv.append(still);
+        
+        // Storing the rating data
+        var rating = response.data[i].rating;
 
+        // Creating an element to have the rating displayed
+        var pRating = $("<p>").text("Rating: " + rating);
+
+         // Displaying the rating
+        topicDiv.append(pRating);
 
         // Putting the entire movie above the previous movies
         $("#topic-view").prepend(topicDiv);
